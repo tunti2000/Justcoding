@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Just code &ndash; Basic of Html Css and JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="document_title">Just code &ndash; Basic of Html Css and JS</h1>
+    <p>www.justcode.com.au (Tan software Develope at IRE)</p>
+    <!-- start content document -->
+    <h2><a name="_contents">Contents</a></h2>
+    <ul>
+        <li>
+            <!-- link internal to introduction -->
+            <a href="#0" title="0">Introduction</a>
+            <ul>
+                <li>
+                    <a href="#1" title="1">Learning Outcomes</a>
+                </li>
+                <li>
+                    <a href="#2" title="2">About the Lesson</a>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#3" title="3">References</a>
+        </li>
+
+        <li>
+            <a href="#4" title="4">What is a function?</a>
+
+
+
+
+
+
+        </li>
+
+        <li>
+            <a href="#5" title="5">Function declaration</a>
+
+
+
+
+            <ul>
+                <li>
+
+                    <a href="#6" title="6">Declaration example 1</a>
+
+
+                </li>
+
+                <li>
+
+                    <a href="#7" title="7">Declaration example 2</a>
+
+
+                </li>
+
+                <li>
+
+                    <a href="#8" title="8">Declaration example 3</a>
+
+
+                </li>
+            </ul>
+
+
+
+        </li>
+
+        <li>
+            <a href="#9" title="9">Function definition</a>
+
+
+
+
+
+
+        </li>
+
+        <li>
+            <a href="#10" title="10">The RETURN statement</a>
+
+
+
+
+
+
+        </li>
+
+        <li>
+            <a href="#11" title="11">Scope and visibility of variables</a>
+
+
+
+
+
+
+        </li>
+
+        <li>
+            <a href="#12" title="12">The STATIC modifier</a>
+
+
+
+
+
+
+        </li>
+
+        <li>
+            <a href="#13" title="13">Divide and conquer</a>
+
+
+
+
+
+
+        </li>
+
+        <li>
+            <a href="#14" title="14">Case Study: ZombieDash Jr.</a>
+
+
+
+
+            <ul>
+                <li>
+
+                    <a href="#15" title="15">Task Statement</a>
+
+
+                </li>
+
+                <li>
+
+                    <a href="#16" title="16">Appendix: The complete game so far</a>
+
+
+                </li>
+            </ul>
+
+
+
+        </li>
+
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>
+        <a name="0"></a>Introduction</h2>
+    <div class="section">
+
+
+
+
+
+
+
+        <h3>
+            <a name="1"></a>Learning Outcomes</h3>
+        <div class="subsection">
+            <p>After completing this activity you will be able to write programs that:</p>
+            <ul>
+                <li>Use functions to produce economical and well-structured programs.</li>
+                <li>Design a simulated digital system using informal tools.</li>
+                <li>Divide a simple project into a set of subsystems.</li>
+                <li>Implement subsystems one at a time to build a simple simulated digital system.</li>
+            </ul>
+        </div>
+
+
+
+
+
+
+
+
+        <h3>
+            <a name="2"></a>About the Lesson</h3>
+        <div class="subsection">
+            <p>The first part of this document is an overview of <em>functions</em>. A function is a statement block which has a name that can be used to execute the instructions. The behaviour of the instructions can be controlled or modified via parameters
+                which form part of the definition of the function. A function may produce an output result which is returned as a value to the calling context.</p>
+            <p>The remainder of the lesson covers the first stage of a case study in which we develop a simple game called ZombieDash Junior. The game will be completed in Topic 4.</p>
+
+        </div>
+    </div>
+    <h2>
+        <a name="3"></a>References</h2>
+    <div class="section">
+        <ul>
+            <li><a href="http://libcat.library.qut.edu.au/search~S8?/aOualline%2C+Steve%2C/aoualline+steve/-3%2C-1%2C0%2CB/exact&FF=aoualline+steve&1%2C5%2C" target="_blank"> Practical C Programming, chapter 9</a></li>
+            <li><a href="http://www.tutorialspoint.com/cprogramming/c_functions.htm" target="_blank"> TutorialsPoint:
+                    Functions</a></li>
+            <li><a href="http://www.tutorialspoint.com/cprogramming/c_scope_rules.htm" target="_blank"> TutorialsPoint:
+                    C Scope Rules</a></li>
+        </ul>
+    </div>
+    <h2>
+        <a name="4"></a>What is a function?</h2>
+    <div class="section">
+        <p>A function is:</p>
+
+        <ul>
+            <li>A list of instructions with a name.</li>
+            <li>We use the name of the function to tell the computer to do the instructions attached to the name.</li>
+            <li>The fundamental unit of code reuse.
+                <ul>
+                    <li>If we intend to use a particular set of operations more than once in the same program, or in more than one program, we capture that code in a function.</li>
+                    <li>We can put a group of related, reusable functions together in a separate file.</li>
+                    <li>We can gather related files together to create a library of code resources that can be used in multiple projects.</li>
+                </ul>
+            </li>
+            <li>A device we can use to add logical structure to a program.
+                <ul>
+                    <li>The code becomes more expressive, because details are hidden away, and the function names carry significant meaning.</li>
+                    <li>A way to make hard jobs easier: divide and conquer.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <h2>
+        <a name="5"></a>Function declaration</h2>
+    <div class="section">
+        <p>Before we can safely call a function, we need to tell the C compiler about the function so it can generate the right code during compilation. This is done by <em>declaring</em> the function.</p>
+        <p>A function declaration usually has the form below:
+            <ul style="list-style-type:none;">
+                <li><span style="display: inline-block;"><code>	RESULT_TYPE&nbsp;NAME&nbsp;(&nbsp;PARAMETER_LIST&nbsp;);
+			</code></span></li>
+            </ul>
+        </p>
+        <p>It looks a bit like a weird kind of variable, with parentheses after it.</p>
+        <p>The declaration tells the compiler:
+            <ul>
+                <li>What type of result the function will send back when it returns.</li>
+                <li>The name of the function.</li>
+                <li>What arguments the function requires to be passed when it is called. This is the contents of the parameter list.</li>
+            </ul>
+        </p>
+        <p>The result type may be <code>void</code>:
+            <ul>
+                <li>Which indicates that the function will not send any value back when it finishes.</li>
+                <li>If the result is <code>void</code>, then the function can use <em>side effects</em> to communicate. Side effects alter the global state of the program. Ways this might happen include:
+                    <ul>
+                        <li>Displaying something on the terminal.</li>
+                        <li>Consuming data from an input stream.</li>
+                        <li>Writing data to an output stream.</li>
+                        <li>Changing the value of a global variable.</li>
+                    </ul>
+                </li>
+                <li>The problem with relying on side-effects is that communication is invisible.
+                    <ul>
+                        <li>In a large program it may become impossible to figure out which functions did what to the global program state.</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p>The result type may also be any of the data types we have seen so far:
+            <ul>
+                <li>But it can only be a single value type.</li>
+                <li>If you want to send more than one value back when a function returns, you must either:
+                    <ul>
+                        <li>Define a <code>struct</code> type to hold your multiple data items, and return a value of that type.
+                            <em>This is not a good application of <code>struct</code> types, so we probably will not
+                                cover it in this unit.</em></li>
+                        <li>Use pointers. <em>This will be covered in Topic 6</em>.</li>
+                    </ul>
+                </li>
+                <li>Typical uses:
+                    <ul>
+                        <li><code>bool</code> &ndash; the function will return <code>true</code> or <code>false</code>.
+                        </li>
+                        <li><code>int</code> &ndash; the function will return a signed integer value (usually 16 or 32 bits, depending on the machine and compiler).</li>
+                        <li><code>double</code> &ndash; the function will return a <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" target="_blank">double precision floating point value</a>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p>If the result type is not <code>void</code>, you can call the function on the right-hand side of an assignment operator, or any other place that a value compatible with the result type can appear.
+            <ul>
+                <li>So you might see constructions like <code>f(g(h(x)))</code>. This means:
+                    <ul>
+                        <li>Evaluate <code>x</code>.</li>
+                        <li>Send the value of <code>x</code> to function <code>h</code>.</li>
+                        <li>Send the value returned by <code>h</code> to function <code>g</code>.</li>
+                        <li>Send the value returned by <code>g</code> to function <code>f</code>.</li>
+                    </ul>
+                </li>
+                <li>The inner function calls are evaluated before the enclosing ones.</li>
+            </ul>
+        </p>
+        <p>The <code>NAME</code> must be a unique identifier.
+            <ul>
+                <li>If we try to use the same name for two different functions (<em>which are both visible to the
+                        compiler and linker at the same time</em>) the program will not build properly.</li>
+                <li>You may have seen <em>duplicate reference</em> errors.</li>
+            </ul>
+        </p>
+        <p>The <code>PARAMETER_LIST</code>, if present, is a comma-separated list that defines variables that carry data into the function when its called.
+            <ul>
+                <li>Each item in the list has a type specifier and (preferably) a variable name.</li>
+                <li>When we call a function that has a non-<code>void</code> parameter list, we must provide an argument of a compatible type to match up with each parameter in the list.</li>
+                <li>Arguments are assigned to parameters by their position in the argument list.</li>
+                <li>The value of each argument is copied into the corresponding parameter.</li>
+                <li>After that, there is <em>no connection</em> between the parameters and the values that were used when the function was called.</li>
+                <li>Any changes made to the parameters inside the function will have <b>no effect</b> on the original values.
+                </li>
+            </ul>
+        </p>
+        <p>The declaration must occur before the first use of the function.
+            <ul>
+                <li>Failure to do so causes a compile-time warning &ldquo;<em>implicit declaration</em>&rdquo;, which should not be ignored.</li>
+                <li>A warning is a sign that you may have made a mistake in your implementation.</li>
+                <li>The correct response to a warning is to fix the underlying cause immediately.</li>
+            </ul>
+        </p>
+
+
+
+
+
+
+
+
+
+        <h3>
+            <a name="6"></a>Declaration example 1</h3>
+        <div class="subsection">
+            <pre style="line-height: 1.25; background: #2A211C; color: #FFFFFF; overflow-x: scroll; font-family: monospace; max-width: 100%;">
+<span class="sc10">void</span> <span class="sc11">setup_screen</span>( <span class="sc10">void</span> );
+
+</pre>
+            <p>Declares a function called <code>setup_screen</code> that does not want any arguments, and does not send anything back when it returns.</p>
+
+        </div>
+
+
+
+
+
+
+
+
+        <h3>
+            <a name="7"></a>Declaration example 2</h3>
+        <div class="subsection">
+            <pre style="line-height: 1.25; background: #2A211C; color: #FFFFFF; overflow-x: scroll; font-family: monospace; max-width: 100%;">
+<span class="sc9">int</span> <span class="sc11">minimum</span>( <span class="sc9">int</span> <span class="sc11">a</span>, <span class="sc9">int</span> <span class="sc11">b</span> );
+
+</pre>
+            <p>Declares a function called <code>minimum</code> that requires two integer arguments, and returns an integer value which is equal to the lesser of the two supplied arguments.</p>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <h3>
+            <a name="8"></a>Declaration example 3</h3>
+        <div class="subsection">
+            <pre style="line-height: 1.25; background: #2A211C; color: #FFFFFF; overflow-x: scroll; font-family: monospace; max-width: 100%;">
+<span class="sc9">void</span> <span class="sc11">draw_pacman</span>(
+            <span class="sc9">double</span> <span class="sc11">x</span>,
+            <span class="sc9">double</span> <span class="sc11">y</span>, 
+            <span class="sc9">double</span> <span class="sc11">xr</span>, 
+            <span class="sc9">double</span> <span class="sc11">yr</span>, 
+            <span class="sc9">double</span> <span class="sc11">angle</span>, 
+            <span class="sc9">char  </span> <span class="sc11">ch</span>
+    );
+
+</pre>
+            <p>Declares a function called <code>draw_pacman</code> that draws a PacMan character. The function does not return a value, but requires several arguments:</p>
+
+            <table cellpadding="3" cellspacing="0" border="1">
+                <tr>
+                    <td><b>Parameter</b></td>
+                    <td><b>Description</b></td>
+                </tr>
+                <tr>
+                    <td><code>x</code></td>
+                    <td>a double precision floating point value that specifies the horizontal location of the centre of the ellipse.</td>
+                </tr>
+                <tr>
+                    <td><code>y</code></td>
+                    <td>a double precision floating point value that specifies the vertical location of the centre of the ellipse.</td>
+                </tr>
+                <tr>
+                    <td><code>xr</code></td>
+                    <td>a double precision floating point value that specifies the horizontal &ldquo;radius&rdquo; of the ellipse.</td>
+                </tr>
+                <tr>
+                    <td><code>yr</code></td>
+                    <td>a double precision floating point value that specifies the vertical &ldquo;radius&rdquo; of the ellipse.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>angle</code></td>
+                    <td>a double precision floating point value that specifies the angle at which the segment starts.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>ch</code></td>
+                    <td>the symbol used to draw the outline.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h2>
+        <a name="9"></a>Function definition</h2>
+    <div class="section">
+        <p>Every function must have exactly one definition, somewhere in the final linked program. The linker uses function names to decide which instructions are included in the final executable file that is produced. It may get those instructions from
+            our code, or from libraries, depending on where each function is defined.
+        </p>
+        <p>A C language function definition has the following form:</p>
+
+
+        <pre style="line-height: 1.25; background: #2A211C; color: #FFFFFF; overflow-x: scroll; font-family: monospace; max-width: 100%;">
+    <span class="sc9">RESULT_TYPE</span> <span class="sc11">NAME</span> ( <span class="sc2">/* PARAMETER LIST */</span> ) {
+        <span class="sc2">/* STATEMENTS */</span>
+    }
+
+</pre>
+        <p>The list of <code>STATEMENTS</code> is something with which we are quite familiar by now. Expressions in the statements can reference all visible global variables, local variables, and the parameters, which behave just like local variables, except
+            they are initialised outside our function, when the function is called.
+        </p>
+        <p>If a function is called several times in a row, local variables should be treated as if the function has never been called before, because the memory used for any local variables is recycled between function calls and used for other things. Even
+            if you disable warnings about uninitialised variables, you cannot rely on the contents of RAM to match your assumptions. You can learn more about this: <a href="https://en.wikipedia.org/wiki/Uninitialized_variable" target="_blank">https://en.wikipedia.org/wiki/Uninitialized_variable</a>
+        </p>
+
+    </div>
+    <h2>
+        <a name="10"></a>The RETURN statement</h2>
+    <div class="section">
+        <p>The <code>return</code> keyword is used to stop execution of the current function and go back to the point at which the current function was called.</p>
+        <p>Function calls work a bit like visiting web pages in a browser.
+            <ul>
+                <li>When you click a link, the browser navigates to the page specified by the link.</li>
+                <li>On the new page, you might find another interesting link. Clicking the link takes you to another page.
+                </li>
+                <li>When you&rsquo;re done on the page, you click the &ldquo;Back&rdquo; button, and the browser returns you to the place you left off browsing in the previous page.</li>
+            </ul>
+        </p>
+        <p><code>return</code> is like the &ldquo;Back&rdquo; button.
+            <ul>
+                <li>When the program counter reaches a <code>return</code> statement in a function that returns
+                    <code>void</code>, control is immediately transferred back to the calling function.</li>
+                <li>When the program counter reaches a <code>return</code> statement in a function that returns a value (that is, not <code>void</code>), the result of the function is saved in a special variable where it can be retrieved later. Then control
+                    is transferred back to the point at which the function was called. After that, the result can be fetched from the special variable, and used according to the needs of the program.</li>
+            </ul>
+        </p>
+        <p>You may have seen the warning: <em>Control reaches end of non-void function</em>.
+            <ul>
+                <li>This warning means that a result was promised, but at least one path through the function does not return a result.</li>
+                <li>This warning must be never be ignored</li>
+                <li>If you don&rsquo;t want to return a result, change the signature of the function to accurately reflect the design of the program.</li>
+            </ul>
+        </p>
+
+    </div>
+    <h2>
+        <a name="11"></a>Scope and visibility of variables</h2>
+    <div class="section">
+        <p>Variables may be declared in the following places:
+            <ul>
+                <li>Outside all the function definitions.
+                    <ul>
+                        <li>These variables are called <em>global variables</em>, because they can be accessed by instructions in any part of the program.</li>
+                        <li>With one exception (see <a href="#static">The STATIC modifier</a>).</li>
+                        <li>Any part of the program can read the value from a global variable.</li>
+                        <li>Any part of the program can <em>change</em> the value in a global variable.</li>
+                        <li>If you don&rsquo;t explicitly initialise a global variable, it will be automatically filled with zeros.</li>
+                    </ul>
+                </li>
+                <li>In the parameter list of a function.
+                    <ul>
+                        <li>Each parameter of a function is a kind of <em>local variable</em>.</li>
+                        <li>A value is assigned to each parameter when the function is called.</li>
+                        <li>After that, the only instructions that can access the parameter are those inside the definition of the function.</li>
+                        <li>While the function is running, parameters behave just the same as any other variable. This means parameters can be changed by the instructions in their function &ndash; something I would not usually recommend.</li>
+                    </ul>
+                </li>
+                <li>In a &ldquo;normal&rdquo; declaration inside the function.
+                    <ul>
+                        <li>These variables are also <em>local variables</em>.</li>
+                        <li>They can be accessed by instructions that appear after the declaration AND appear in the same block.</li>
+                        <li>They can be accessed by instructions that appear in any block nested within the same block, provided the nested blocks come after the declaration.</li>
+                        <li>The programmer is responsible for initialising local variables.</li>
+                        <li>The value of a local variable is likely to change unpredictably between function calls, so always make sure you initialise the variable.</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p>Blocks &ndash; statement sequences enclosed in braces &ndash; behave like &ldquo;worlds within a world&rdquo;.
+            <ul>
+                <li>Each block defines its own <em>scope</em>.</li>
+                <li>A variable declared inside a nested block may have the same name as a variable declared in an enclosing block. The variable declared in the nested scope <em>hides</em> the variable declared in the outer scope, and it may have a different
+                    type.
+                </li>
+            </ul>
+        </p>
+        <p>Beware global variables!!!
+            <ul>
+                <li>Global variables are convenient, so lazy programmers tend to use them a lot.</li>
+                <li>Global variables are fraught with peril, mainly because they can be changed by any instruction in the program. This increases the chances that data may be trashed by well-intentioned but incorrect code, and it may be very hard to figure
+                    out which instructions are causing the problems.</li>
+                <li>For this reason, I would normally counsel against excessive use of global variables.</li>
+                <li>We are preparing to work with micro-controllers where RAM is very limited, so compromise is necessary.
+                </li>
+            </ul>
+        </p>
+
+    </div>
+    <h2>
+        <a name="12"></a>The STATIC modifier</h2>
+    <div class="section">
+        <p>The <code>static</code> keyword is used to modify the visibility and lifespan of a variable or function.</p>
+        <p>The keyword is placed before the declaration it modifies.</p>
+        <p>When we use <code>static</code> in a function declaration or definition, we hide the function from the outside world:
+            <ul>
+                <li>Only instructions in the same compilation unit can access the function.</li>
+                <li>For C# or Java programmers, this is <em>very different</em> form what you may be used to &ndash;
+                    <code>static</code> in C means something more like <code>private</code> in C# or Java.</li>
+            </ul>
+        </p>
+        <p>When we use <code>static</code> in a global variable declaration, we hide the variable from the outside world:
+            <ul>
+                <li>Only instructions in the same compilation unit can access the variable.</li>
+            </ul>
+        </p>
+        <p>When we use <code>static</code> in a local variable declaration:
+            <ul>
+                <li>The value of the variable is preserved between function calls.</li>
+            </ul>
+        </p>
+
+    </div>
+    <h2>
+        <a name="13"></a>Divide and conquer</h2>
+    <div class="section">
+        <p>We use functions to manage the complexity of programming tasks.</p>
+        <p>Take a large, possibly quite overwhelming task, and split it up into smaller parts.</p>
+        <p>Each part is a group of related functions which collaborate to solve part of the overall problem.</p>
+        <p>Some parts are independent of the particular problem we are working on right now, and can be used in many projects.
+            <ul>
+                <li>The functions can be packaged up to form a reusable software library.</li>
+                <li>Example: (introduced today) the ZDK, which contains functions for portable character-based graphics.
+                </li>
+            </ul>
+        </p>
+
+    </div>
+    <h2>
+        <a name="14"></a>Case Study: ZombieDash Jr.</h2>
+    <div class="section">
+
+
+
+
+
+
+
+        <h3>
+            <a name="15"></a>Task Statement</h3>
+        <div class="subsection">
+            <p>ZombieDash Jr. is a simple simulated digital system in which the player uses the keyboard to control a heroic avatar on the screen while a zombie moves around the screen, starting in some random direction and bouncing off the borders. There
+                is always a piece of gold lying on the floor at some random location.
+            </p>
+            <p>The screen is surrounded by a border made up of a single row of <code>'*'</code> characters.</p>
+            <p>The zombie will ultimately be represented by a distinctive image, with dimensions at least 5&times;5 pixels. Initially, we will use a single <code>'Z'</code>. At the beginning of play, the zombie will be placed at a random location on the
+                screen. The initial location must be such that no part of the zombie overlaps the border. The zombie should be set in motion at a speed of approximately 10 pixels per second, walking in some random direction.</p>
+            <p>The hero will ultimately be represented by a distinctive image, with dimensions at least 5&times;5 pixels. Initially, we will use a single <code>'H'</code>. At the beginning the hero image which should be placed in the centre of the screen.
+                The hero takes a step of one pixel in response to characters read from the standard input stream: <code>'a'</code> = left, <code>'d'</code> = right, <code>'s'</code> = down, and <code>'w'</code> = up.</p>
+            <p>Neither hero nor zombie is allowed to cross or overlap the border. When the zombie hits the border it must be reflected back into the playing area. The hero should simply stop next to the border if the user tries to cross the line.</p>
+            <p>The hero&rsquo;s current condition is reflected by a quantity called <em>Remaining Useful Life</em>, which is 10 units when the simulation commences, and reduces by 1 unit each time the player and the zombie collide.</p>
+            <p>Each time the hero touches the gold, a running tally of the number of gold collected should increment, and the gold should regenerate at a new random location where the hero can reach it without touching a border.
+            </p>
+            <p>When the remaining useful life reaches zero, the simulation is over. A notice should be displayed in the centre of the screen, with the following text:</p>
+
+            <div style="text-align: center;">
+                <p>Simulation over!<br />Press any key to exit...</p>
+
+            </div>
+            <p>The game may also be terminated by the user pressing the <code>'q'</code> key. If this happens, a notice should be displayed:</p>
+
+            <div style="text-align: center;">
+                <p>Goodbye and thank-you for playing ZombieDash Jr.<br />Press any key to exit...</p>
+
+            </div>
+            <p>Either way the simulation ends, the game should freeze in its current state until the user presses a key, after which the game should terminate.</p>
+            <p>This simulation may seem a bit complex but we can make things a lot easier by breaking the problem down into manageable chunks.</p>
+            <p>The program as a whole consists of three functions:</p>
+
+            <ul>
+                <li><code>main</code>: the top-level function; hosts an event loop.</li>
+                <li><code>setup</code>: called once when the simulation starts.</li>
+                <li><code>loop</code>: called repeatedly to implement the event loop.</li>
+            </ul>
+            <p>Within this architecture there are parts corresponding to the following subsystems.</p>
+
+            <ul>
+                <li>Drawing: responsible for the general appearance of the simulation.</li>
+                <li>Hero: responsible for the setup and loop of the hero.</li>
+                <li>Gold: responsible for setup and loop of the gold.</li>
+                <li>Zombie: responsible for setup and loop of the zombie(s).</li>
+                <li>Collision: responsible for detection of collision between hero, gold, and zombie(s).</li>
+                <li>End simulation.</li>
+            </ul>
+            <p>We can tackle the program one subsystem at a time. Each of them is quite simple, but once they are put together the end result may seem quite sophisticated.</p>
+            <p>The overall architecture is sometimes best represented by a mind map.
+                <br /><a href="data:application/x-freemind;base64,PG1hcCB2ZXJzaW9uPSIxLjAuMSI+CjwhLS0gVG8gdmlldyB0aGlzIGZpbGUsIGRvd25sb2FkIGZyZWUgbWluZCBtYXBwaW5nIHNvZnR3YXJlIEZyZWVNaW5kIGZyb20gaHR0cDovL2ZyZWVtaW5kLnNvdXJjZWZvcmdlLm5ldCAtLT4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTUwNzU4OSIgSUQ9IklEXzE1ODQ3NDI1NjEiIE1PRElGSUVEPSIxNTY0OTc5NTI5ODc0IiBURVhUPSJab21iaWUgRGFzaCBKci4mI3hhOyI+Cjxub2RlIENSRUFURUQ9IjE1NjQ5ODAxNzk0NzgiIEZPTERFRD0idHJ1ZSIgSUQ9IklEXzExMDkwNjU0ODEiIE1PRElGSUVEPSIxNTY0OTgwNDYyMTQ0IiBQT1NJVElPTj0icmlnaHQiIFRFWFQ9Im1haW4iPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTc5NTUxNDQzIiBJRD0iSURfMTg0MzU4ODA2MCIgTU9ESUZJRUQ9IjE1NjQ5Nzk5NjEyODAiIFRFWFQ9IlNldHVwIj4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTU2NTU1MiIgRk9MREVEPSJ0cnVlIiBJRD0iSURfMzI3MDM3MTM4IiBNT0RJRklFRD0iMTU2NDk4MDQ1MDk4MiIgVEVYVD0iU2V0dXAgaGVybyI+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk3MjI3MTMiIElEPSJJRF8zMjgyNjE1NjYiIE1PRElGSUVEPSIxNTY0OTc5NzQxNzM5IiBURVhUPSJQbGFjZSBoZXJvIGF0IGNlbnRyZSBvZiB0ZXJtaW5hbCAiLz4KPC9ub2RlPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTc5NTczMzEyIiBGT0xERUQ9InRydWUiIElEPSJJRF8xNzkyMjM4ODEiIE1PRElGSUVEPSIxNTY0OTgwNDUwMTIwIiBURVhUPSJTZXR1cCBHb2xkIj4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTc0NzYzMSIgSUQ9IklEXzE2NzM3Njk3MjIiIE1PRElGSUVEPSIxNTY0OTc5NzY1MzM3IiBURVhUPSJQbGFjZSBnb2xkIGF0IHJhbmRvbSBwb3NpdGlvbiIvPgo8L25vZGU+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk1NzgwNTciIEZPTERFRD0idHJ1ZSIgSUQ9IklEXzE4Mjg1OTgwNjgiIE1PRElGSUVEPSIxNTY0OTgwNDQ5MDcwIiBURVhUPSJTZXR1cCB6b21iaWUiPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTc5NzgzOTUxIiBJRD0iSURfMjA4MzE3NDEyIiBNT0RJRklFRD0iMTU2NDk3OTc5NTI5MiIgVEVYVD0iUGxhY2Ugem9tYmllIGF0IHJhbmRvbSBwb3NpdGlvbiIvPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTc5Nzk1OTQ0IiBJRD0iSURfMTczNjQ3NDk3MCIgTU9ESUZJRUQ9IjE1NjQ5Nzk4MDU2OTEiIFRFWFQ9IlNldCB1cCB6b21iaWUgbW92ZW1lbnQuIi8+Cjwvbm9kZT4KPC9ub2RlPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTc5NzczOTkxIiBJRD0iSURfMjg5MTQ4MjgwIiBNT0RJRklFRD0iMTU2NDk4MDQxNzU4NCIgVEVYVD0iRHJhdyI+CjxhcnJvd2xpbmsgREVTVElOQVRJT049IklEXzE0NjY0NDYwMTgiIEVOREFSUk9XPSJEZWZhdWx0IiBFTkRJTkNMSU5BVElPTj0iMTYwOzIyNDsiIElEPSJBcnJvd19JRF8xODI2NDIzMzE5IiBTVEFSVEFSUk9XPSJOb25lIiBTVEFSVElOQ0xJTkFUSU9OPSIxNzQ7MzU0OyIvPgo8L25vZGU+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk1NjEyOTYiIElEPSJJRF8xNzQxNTM5NDkiIE1PRElGSUVEPSIxNTY0OTgwNDQxMzY3IiBURVhUPSJMb29wIj4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk4MDAzMjk3NSIgSUQ9IklEXzE3NDYwODM2NzMiIE1PRElGSUVEPSIxNTY0OTgwMDQxNTk4IiBURVhUPSJHZXQga2V5Ii8+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk2MjQ2OTYiIEZPTERFRD0idHJ1ZSIgSUQ9IklEXzE1NzM5MjYyMzMiIE1PRElGSUVEPSIxNTY0OTgwNDQ4MTIyIiBURVhUPSJVcGRhdGUgaGVybyI+Cjxub2RlIENSRUFURUQ9IjE1NjQ5ODAwNTgyNjQiIElEPSJJRF84OTU1NDMzMTEiIE1PRElGSUVEPSIxNTY0OTgwMDc0MDAzIiBURVhUPSJNb3ZlIGxlZnQsIHJpZ2h0LCB1cCwgZG93biwgYmFzZWQgb24ga2V5LiIvPgo8L25vZGU+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk2Mjk1MzciIEZPTERFRD0idHJ1ZSIgSUQ9IklEXzE5MzI3NzU1NDEiIE1PRElGSUVEPSIxNTY0OTgwNDQ3MjI0IiBURVhUPSJVcGRhdGUgZ29sZCI+Cjxub2RlIENSRUFURUQ9IjE1NjQ5ODAwODU3ODIiIElEPSJJRF8xNjgwMzM4NDgwIiBNT0RJRklFRD0iMTU2NDk4MDA5NDY2NyIgVEVYVD0iU2VlIGlmIGhlcm8gY29sbGlkZXMgd2l0aCBnb2xkLiI+Cjxub2RlIENSRUFURUQ9IjE1NjQ5ODAyNTQ5MzQiIElEPSJJRF8xNzU0Mzc4NTgxIiBNT0RJRklFRD0iMTU2NDk4MDI2NDQ4OSIgVEVYVD0iSW5jcmVtZW50IHNjb3JlLiIvPgo8L25vZGU+Cjwvbm9kZT4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTY0NTk2MCIgRk9MREVEPSJ0cnVlIiBJRD0iSURfMTcxNTM0Mjg2MiIgTU9ESUZJRUQ9IjE1NjQ5ODA0NDU3NzIiIFRFWFQ9IlVwZGF0ZSB6b21iaWUiPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTgwMDk5MzAzIiBJRD0iSURfMTY3MzE0Mzg5OCIgTU9ESUZJRUQ9IjE1NjQ5ODAxMjU0NTEiIFRFWFQ9Ik1vdmUgem9tYmllIGlmIG5vIGtleXByZXNzIj4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk4MDI2OTk3NCIgSUQ9IklEXzQxMzM3NDg1NyIgTU9ESUZJRUQ9IjE1NjQ5ODAzNDQ4NTEiIFRFWFQ9ImNvbXB1dGUgbmV3IGxvY2F0aW9uLiIvPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTgwMjkxNTUwIiBJRD0iSURfMTYzMjY1MTYyOSIgTU9ESUZJRUQ9IjE1NjQ5ODAzNTE0NzQiIFRFWFQ9IkJvdW5jZSBpZiBoaXRzIGJvcmRlci4iLz4KPC9ub2RlPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTgwMTI2MzgyIiBJRD0iSURfMTcwOTg0NDU1NyIgTU9ESUZJRUQ9IjE1NjQ5ODAyNDQ0MTEiIFRFWFQ9IlNlZSBpZiBoZXJvIGFuZCB6b21iaWUgY29sbGlkZS4iLz4KPC9ub2RlPgo8L25vZGU+Cjwvbm9kZT4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTU4NzA0MSIgRk9MREVEPSJ0cnVlIiBJRD0iSURfMzYwOTIyNjk0IiBNT0RJRklFRD0iMTU2NDk4MDQzNDA1NiIgUE9TSVRJT049ImxlZnQiIFRFWFQ9IlN0YXRlIj4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTU5MzMzNyIgSUQ9IklEXzkxNDAwMzU5OCIgTU9ESUZJRUQ9IjE1NjQ5Nzk2MDA4NzciIFRFWFQ9Ikhlcm8gc3RhdGUiLz4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTYwMjI0MCIgSUQ9IklEXzE1Nzg3ODY1NTUiIE1PRElGSUVEPSIxNTY0OTc5NjA2NjQ1IiBURVhUPSJHb2xkIHN0YXRlIi8+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk2MDc1MzYiIElEPSJJRF8xMzMzNTE4NTYzIiBNT0RJRklFRD0iMTU2NDk3OTYxMTE4OSIgVEVYVD0iWm9tYmllIHN0YXRlIi8+Cjwvbm9kZT4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTg0NDY4NyIgRk9MREVEPSJ0cnVlIiBJRD0iSURfMTQ2NjQ0NjAxOCIgTU9ESUZJRUQ9IjE1NjQ5ODA0MzU2NzQiIFBPU0lUSU9OPSJsZWZ0IiBURVhUPSJEcmF3aW5nIj4KPGxpbmt0YXJnZXQgQ09MT1I9IiNiMGIwYjAiIERFU1RJTkFUSU9OPSJJRF8xNDY2NDQ2MDE4IiBFTkRBUlJPVz0iRGVmYXVsdCIgRU5ESU5DTElOQVRJT049IjE2MDsyMjQ7IiBJRD0iQXJyb3dfSURfMTgyNjQyMzMxOSIgU09VUkNFPSJJRF8yODkxNDgyODAiIFNUQVJUQVJST1c9Ik5vbmUiIFNUQVJUSU5DTElOQVRJT049IjE3NDszNTQ7Ii8+Cjxub2RlIENSRUFURUQ9IjE1NjQ5Nzk5ODE4MzkiIElEPSJJRF8xODExMzI3MzE4IiBNT0RJRklFRD0iMTU2NDk3OTk5MDM1NSIgVEVYVD0iRHJhdyBib3JkZXIiLz4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk3OTk5MTU1OSIgSUQ9IklEXzU2NzgyMjg4MSIgTU9ESUZJRUQ9IjE1NjQ5Nzk5OTQ1NDciIFRFWFQ9IkRyYXcgaGVybyIvPgo8bm9kZSBDUkVBVEVEPSIxNTY0OTc5OTk2MzE5IiBJRD0iSURfOTAwMTI5OTQ2IiBNT0RJRklFRD0iMTU2NDk4MDAwMTU2MyIgVEVYVD0iRHJhdyBnb2xkIi8+Cjxub2RlIENSRUFURUQ9IjE1NjQ5ODAwMDI0NDciIElEPSJJRF8xMTA3NDgwNjIwIiBNT0RJRklFRD0iMTU2NDk4MDAxMDQ0MyIgVEVYVD0iRHJhdyB6b21iaWUiLz4KPG5vZGUgQ1JFQVRFRD0iMTU2NDk4MDAxMzU5OSIgSUQ9IklEXzIwOTcwMjc2NCIgTU9ESUZJRUQ9IjE1NjQ5ODAwMTczMDYiIFRFWFQ9IkRyYXcgc3RhdHMiLz4KPC9ub2RlPgo8L25vZGU+CjwvbWFwPgo=
+" target="_blank" title="ZDJ Mind Map (FreeMind Format)" download="ZDJ.mm">ZDJ Mind Map (FreeMind Format)</a>.</p>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <h3>
+            <a name="16"></a>Appendix: The complete game so far</h3>
+        <div class="subsection">
+            <p>The listing below contains the fully operational demonstration program.</p>
+            <p>To compile this program, you will have to:</p>
+
+            <ul>
+                <li>Download ZDK.zip from the Software Resources page.</li>
+                <li>Extract the folder ZDK from the archive and copy it to a location on your computer.
+                    <ul>
+                        <li>Assume that you place it at <code>c:/cab202_software/ZDK</code>, and that you will be working in <code>c:/cab202_software/Work/Topic03</code>.</li>
+                    </ul>
+                </li>
+                <li>Open a (Linux/Cygwin) terminal, and <code>cd</code> to <code>c:/cab202_software/ZDK</code>.</li>
+                <li>Using <code>ls</code> you should observe that there are several files, including
+                    <code>cab202_graphics.c</code>, <code>cab202_graphics.h</code>, <code>makefile</code>, plus a few others.
+                </li>
+                <li>Execute the <code>make</code> command.</li>
+                <li>All being well, you should observe the creation of a library, named <code>libzdk.a</code>.</li>
+                <li>Now create and <code>cd</code> to your work directory.</li>
+                <li>Copy the code below into a text editor, and save it in the work directory, calling it
+                    <code>"zdj.c"</code>.</li>
+                <li>Compile the program with the command:
+                    <br />
+                    <code>gcc&nbsp;zdj.c&nbsp;-o&nbsp;zdj&nbsp;-std=gnu99&nbsp;-Wall&nbsp;-Werror&nbsp;-I../../ZDK&nbsp;-L../../ZDK&nbsp;-lzdk&nbsp;-lncurses</code>
+                </li>
+                <li>All being well, you should observe the creation of output file <code>zdj.exe</code>, or perhaps
+                    <code>ZDJ.out</code>.</li>
+            </ul>
+            <pre style="line-height: 1.25; background: #2A211C; color: #FFFFFF; overflow-x: scroll; font-family: monospace; max-width: 100%;"><span class="sc2">/**
+ *  ZDJ.c, by Lawrence Buckingham.
+ *
+ *  Copyright (C) Queensland University of Technology, 2016-2019.
+ */</span>
+<span class="sc10">#include &lt;math.h&gt;
+</span><span class="sc10">#include &lt;stdlib.h&gt;
+</span><span class="sc10">#include &lt;string.h&gt;
+</span><span class="sc10">#include &lt;cab202_graphics.h&gt;
+</span><span class="sc10">#include &lt;cab202_timers.h&gt;
+</span>
+<span class="sc10">#ifndef M_PI
+</span><span class="sc10">#define M_PI        3.14159265358979323846264338327950288   /* pi             */
+</span><span class="sc10">#endif
+</span>
+<span class="sc2">// Set this to true when simulation is over</span>
+<span class="sc9">bool</span> <span class="sc11">game_over</span> = <span class="sc11">false</span>;
+
+<span class="sc2">// Hero state</span>
+<span class="sc9">double</span> <span class="sc11">hero_x</span>, <span class="sc11">hero_y</span>;
+<span class="sc9">int</span> <span class="sc11">health</span>;
+<span class="sc10">#define HERO_IMG 'H'
+</span><span class="sc10">#define MAX_HEALTH 100
+</span>
+<span class="sc2">// Zombie state</span>
+<span class="sc9">double</span> <span class="sc11">zombie_x</span>, <span class="sc11">zombie_y</span>, <span class="sc11">zombie_dx</span>, <span class="sc11">zombie_dy</span>;
+<span class="sc10">#define ZOMBIE_IMG 'Z'
+</span>
+<span class="sc2">// Gold state</span>
+<span class="sc9">double</span> <span class="sc11">gold_x</span>, <span class="sc11">gold_y</span>;
+<span class="sc9">int</span> <span class="sc11">score</span>;
+<span class="sc10">#define GOLD_IMG 'G'
+</span>
+<span class="sc2">// Screen dimensions</span>
+<span class="sc9">int</span> <span class="sc11">W</span>, <span class="sc11">H</span>;
+
+<span class="sc2">/**
+ *	Draw a border around the screen using '*' symbols.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">draw_border</span>() {
+    <span class="sc5">const</span> <span class="sc9">int</span> <span class="sc11">ch</span> = <span class="sc4">'*'</span>;
+    <span class="sc11">draw_line</span>(<span class="sc4">0</span>, <span class="sc4">0</span>, <span class="sc4">0</span>, <span class="sc11">H</span> - <span class="sc4">1</span>, <span class="sc11">ch</span>);
+    <span class="sc11">draw_line</span>(<span class="sc4">0</span>, <span class="sc4">0</span>, <span class="sc11">W</span> - <span class="sc4">1</span>, <span class="sc4">0</span>, <span class="sc11">ch</span>);
+    <span class="sc11">draw_line</span>(<span class="sc4">0</span>, <span class="sc4">2</span>, <span class="sc11">W</span> - <span class="sc4">1</span>, <span class="sc4">2</span>, <span class="sc11">ch</span>);
+    <span class="sc11">draw_line</span>(<span class="sc4">0</span>, <span class="sc11">H</span> - <span class="sc4">1</span>, <span class="sc11">W</span> - <span class="sc4">1</span>, <span class="sc11">H</span> - <span class="sc4">1</span>, <span class="sc11">ch</span>);
+    <span class="sc11">draw_line</span>(<span class="sc11">W</span> - <span class="sc4">1</span>, <span class="sc4">0</span>, <span class="sc11">W</span> - <span class="sc4">1</span>, <span class="sc11">H</span> - <span class="sc4">1</span>, <span class="sc11">ch</span>);
+}
+
+<span class="sc2">/**
+ *	Draw the status information.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">draw_status</span>() {
+    <span class="sc2">// Place-holder for something cool.</span>
+    <span class="sc11">draw_formatted</span>(<span class="sc4">10</span>, <span class="sc4">1</span>, <span class="sc6">"Health: %3d, Score: %3d"</span>, <span class="sc11">health</span>, <span class="sc11">score</span>);
+}
+
+<span class="sc2">/**
+ *  Detects collision between objects that each occupy a single pixel.
+ *
+ *  Parameters:
+ *  (x0, y0)   the position of one object.
+ *  (x1, y1)    the position of the other object.
+ *
+ *  Returns true if and only if the rounded locations are the same.
+ */</span>
+<span class="sc9">bool</span> <span class="sc11">collided</span>(<span class="sc9">double</span> <span class="sc11">x0</span>, <span class="sc9">double</span> <span class="sc11">y0</span>, <span class="sc9">double</span> <span class="sc11">x1</span>, <span class="sc9">double</span> <span class="sc11">y1</span>) {
+    <span class="sc5">return</span> <span class="sc11">round</span>(<span class="sc11">x0</span>) == <span class="sc11">round</span>(<span class="sc11">x1</span>) &amp;&amp; <span class="sc11">round</span>(<span class="sc11">y0</span>) == <span class="sc11">round</span>(<span class="sc11">y1</span>);
+}
+
+<span class="sc2">/**
+ *	Sets up the hero, placing it initially in the centre of the screen.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">setup_hero</span>() {
+    <span class="sc11">hero_x</span> = (<span class="sc11">W</span> - <span class="sc4">1</span>) / <span class="sc4">2</span>;
+    <span class="sc11">hero_y</span> = (<span class="sc11">H</span> - <span class="sc4">1</span>) / <span class="sc4">2</span>;
+    <span class="sc11">health</span> = <span class="sc10">MAX_HEALTH</span>;
+}
+
+<span class="sc2">/**
+ *	Draws the hero.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">draw_hero</span>() {
+    <span class="sc11">draw_char</span>(<span class="sc11">round</span>(<span class="sc11">hero_x</span>), <span class="sc11">round</span>(<span class="sc11">hero_y</span>), <span class="sc10">HERO_IMG</span>);
+}
+
+<span class="sc2">/**
+ *	Updates the position of the hero based on a key code.
+ *
+ *	Parameter: ch, the key code to process.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">update_hero</span>(<span class="sc9">int</span> <span class="sc11">ch</span>) {
+    <span class="sc5">if</span> (<span class="sc11">ch</span> == <span class="sc4">'a'</span> &amp;&amp; <span class="sc11">hero_x</span> &gt; <span class="sc4">1</span>) {
+        <span class="sc11">hero_x</span>--;
+    }
+    <span class="sc5">else</span> <span class="sc5">if</span> (<span class="sc11">ch</span> == <span class="sc4">'d'</span> &amp;&amp; <span class="sc11">hero_x</span> &lt; <span class="sc11">W</span> - <span class="sc4">2</span>) {
+        <span class="sc11">hero_x</span>++;
+    }
+    <span class="sc5">else</span> <span class="sc5">if</span> (<span class="sc11">ch</span> == <span class="sc4">'s'</span> &amp;&amp; <span class="sc11">hero_y</span> &lt; <span class="sc11">H</span> - <span class="sc4">2</span>) {
+        <span class="sc11">hero_y</span>++;
+    }
+    <span class="sc5">else</span> <span class="sc5">if</span> (<span class="sc11">ch</span> == <span class="sc4">'w'</span> &amp;&amp; <span class="sc11">hero_y</span> &gt; <span class="sc4">3</span>) {
+        <span class="sc11">hero_y</span>--;
+    }
+}
+
+<span class="sc2">/**
+ *	Sets up the gold.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">setup_gold</span>() {
+    <span class="sc11">gold_x</span> = <span class="sc4">1</span> + <span class="sc11">rand</span>() % (<span class="sc11">W</span> - <span class="sc4">2</span>);
+    <span class="sc11">gold_y</span> = <span class="sc4">3</span> + <span class="sc11">rand</span>() % (<span class="sc11">H</span> - <span class="sc4">4</span>);
+}
+
+<span class="sc2">/**
+ *	Draws the gold.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">draw_gold</span>() {
+    <span class="sc11">draw_char</span>(<span class="sc11">round</span>(<span class="sc11">gold_x</span>), <span class="sc11">round</span>(<span class="sc11">gold_y</span>), <span class="sc10">GOLD_IMG</span>);
+}
+
+<span class="sc2">/**
+ *  Updates the state of the gold, checking for collision with the hero and
+ *  if necessary incrementing the score and re-spawning the gold.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">update_gold</span>(<span class="sc9">int</span> <span class="sc11">key</span>) {
+    <span class="sc5">if</span> (<span class="sc11">collided</span>(<span class="sc11">hero_x</span>, <span class="sc11">hero_y</span>, <span class="sc11">gold_x</span>, <span class="sc11">gold_y</span>)) {
+        <span class="sc11">score</span>++;
+        <span class="sc11">setup_gold</span>();
+    }
+}
+
+<span class="sc2">/**
+ *	Draws the zombie.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">draw_zombie</span>() {
+    <span class="sc11">draw_char</span>(<span class="sc11">round</span>(<span class="sc11">zombie_x</span>), <span class="sc11">round</span>(<span class="sc11">zombie_y</span>), <span class="sc10">ZOMBIE_IMG</span>);
+}
+
+<span class="sc2">/**
+ *	Sets up the zombie at a random location and direction.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">setup_zombie</span>() {
+    <span class="sc11">zombie_x</span> = <span class="sc4">1</span> + <span class="sc11">rand</span>() % (<span class="sc11">W</span> - <span class="sc4">2</span>);
+    <span class="sc11">zombie_y</span> = <span class="sc4">3</span> + <span class="sc11">rand</span>() % (<span class="sc11">H</span> - <span class="sc4">4</span>);
+
+    <span class="sc9">double</span> <span class="sc11">zombie_dir</span> = <span class="sc11">rand</span>() * <span class="sc10">M_PI</span> * <span class="sc4">2</span> / <span class="sc11">RAND_MAX</span>;
+    <span class="sc5">const</span> <span class="sc9">double</span> <span class="sc11">step</span> = <span class="sc4">0</span><span class="sc4">.1</span>;
+
+    <span class="sc11">zombie_dx</span> = <span class="sc11">step</span> * <span class="sc11">cos</span>(<span class="sc11">zombie_dir</span>);
+    <span class="sc11">zombie_dy</span> = <span class="sc11">step</span> * <span class="sc11">sin</span>(<span class="sc11">zombie_dir</span>);
+}
+
+<span class="sc10">void</span> <span class="sc11">do_collided</span>() {
+    <span class="sc11">clear_screen</span>();
+
+    <span class="sc5">const</span> <span class="sc9">char</span> *<span class="sc11">message</span>[] = {
+        <span class="sc6">"Simulation over!"</span>,
+        <span class="sc6">"Press any key to exit..."</span>
+    };
+
+    <span class="sc5">const</span> <span class="sc9">int</span> <span class="sc11">rows</span> = <span class="sc4">2</span>;
+
+    <span class="sc5">for</span> (<span class="sc9">int</span> <span class="sc11">i</span> = <span class="sc4">0</span>; <span class="sc11">i</span> &lt; <span class="sc11">rows</span>; <span class="sc11">i</span>++) {
+        <span class="sc2">// Draw message in middle of screen.</span>
+        <span class="sc9">int</span> <span class="sc11">len</span> = <span class="sc11">strlen</span>(<span class="sc11">message</span>[<span class="sc11">i</span>]);
+        <span class="sc9">int</span> <span class="sc11">x</span> = (<span class="sc11">W</span> - <span class="sc11">len</span>) / <span class="sc4">2</span>;
+        <span class="sc9">int</span> <span class="sc11">y</span> = (<span class="sc11">H</span> - <span class="sc11">rows</span>) / <span class="sc4">2</span> + <span class="sc11">i</span>;
+        <span class="sc11">draw_formatted</span>(<span class="sc11">x</span>, <span class="sc11">y</span>, <span class="sc11">message</span>[<span class="sc11">i</span>]);
+    }
+
+    <span class="sc11">show_screen</span>();
+
+    <span class="sc5">while</span> (<span class="sc11">get_char</span>() &gt; <span class="sc4">0</span>) {}
+    <span class="sc11">wait_char</span>();
+
+    <span class="sc11">game_over</span> = <span class="sc11">true</span>;
+}
+
+<span class="sc2">/**
+ *	Moves the zombie a single step (if possible) with reflection
+ *	from the border.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">move_zombie</span>() {
+    <span class="sc2">// Assume that zombie is have not already collided with the borders.</span>
+    <span class="sc2">// Predict the next screen position of the zombie.</span>
+    <span class="sc9">int</span> <span class="sc11">new_x</span> = <span class="sc11">round</span>(<span class="sc11">zombie_x</span> + <span class="sc11">zombie_dx</span>);
+    <span class="sc9">int</span> <span class="sc11">new_y</span> = <span class="sc11">round</span>(<span class="sc11">zombie_y</span> + <span class="sc11">zombie_dy</span>);
+
+    <span class="sc9">bool</span> <span class="sc11">bounced</span> = <span class="sc11">false</span>;
+
+    <span class="sc5">if</span> (<span class="sc11">new_x</span> == <span class="sc4">0</span> || <span class="sc11">new_x</span> == <span class="sc11">screen_width</span>() - <span class="sc4">1</span>) {
+        <span class="sc2">// Bounce of left or right wall: reverse horizontal direction</span>
+        <span class="sc11">zombie_dx</span> = -<span class="sc11">zombie_dx</span>;
+        <span class="sc11">bounced</span> = <span class="sc11">true</span>;
+    }
+
+    <span class="sc5">if</span> (<span class="sc11">new_y</span> == <span class="sc4">2</span> || <span class="sc11">new_y</span> == <span class="sc11">screen_height</span>() - <span class="sc4">1</span>) {
+        <span class="sc2">// Bounce off top or bottom wall: reverse vertical direction</span>
+        <span class="sc11">zombie_dy</span> = -<span class="sc11">zombie_dy</span>;
+        <span class="sc11">bounced</span> = <span class="sc11">true</span>;
+    }
+
+    <span class="sc5">if</span> (!<span class="sc11">bounced</span>) {
+        <span class="sc2">// no bounce: move instead.</span>
+        <span class="sc11">zombie_x</span> += <span class="sc11">zombie_dx</span>;
+        <span class="sc11">zombie_y</span> += <span class="sc11">zombie_dy</span>;
+    }
+}
+
+<span class="sc2">/**
+ *	Moves the zombie (if it their turn), and checks for collision
+ *	with hero.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">update_zombie</span>(<span class="sc9">int</span> <span class="sc11">key</span>) {
+    <span class="sc5">if</span> (<span class="sc11">key</span> &lt; <span class="sc4">0</span>) {
+        <span class="sc11">move_zombie</span>();
+    }
+
+    <span class="sc5">if</span> (<span class="sc11">collided</span>(<span class="sc11">hero_x</span>, <span class="sc11">hero_y</span>, <span class="sc11">zombie_x</span>, <span class="sc11">zombie_y</span>)) {
+        <span class="sc11">setup_zombie</span>();
+        <span class="sc11">health</span>--;
+
+        <span class="sc5">if</span> (<span class="sc11">health</span> &lt;= <span class="sc4">0</span>) {
+            <span class="sc11">do_collided</span>();
+        }
+    }
+}
+
+<span class="sc2">/**
+ *	Draws the display.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">draw_all</span>() {
+    <span class="sc11">clear_screen</span>();
+    <span class="sc11">draw_border</span>();
+    <span class="sc11">draw_status</span>();
+    <span class="sc11">draw_hero</span>();
+    <span class="sc11">draw_gold</span>();
+    <span class="sc11">draw_zombie</span>();
+    <span class="sc11">show_screen</span>();
+}
+
+<span class="sc2">/**
+ *  Sets up all objects in the game.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">setup</span>(<span class="sc10">void</span>) {
+    <span class="sc11">srand</span>(<span class="sc11">get_current_time</span>());
+    <span class="sc11">W</span> = <span class="sc11">screen_width</span>();
+    <span class="sc11">H</span> = <span class="sc11">screen_height</span>();
+    <span class="sc11">setup_hero</span>();
+    <span class="sc11">setup_gold</span>();
+    <span class="sc11">setup_zombie</span>();
+}
+
+<span class="sc2">/**
+ *  Updates the state of all objects in the game, based on user input and
+ *  the existing state.
+ */</span>
+<span class="sc10">void</span> <span class="sc11">loop</span>() {
+    <span class="sc9">int</span> <span class="sc11">key</span> = <span class="sc11">get_char</span>();
+
+    <span class="sc5">if</span> (<span class="sc11">key</span> == <span class="sc4">'q'</span>) {
+        <span class="sc11">game_over</span> = <span class="sc11">true</span>;
+        <span class="sc5">return</span>;
+    }
+
+    <span class="sc11">update_hero</span>(<span class="sc11">key</span>);
+    <span class="sc11">update_gold</span>(<span class="sc11">key</span>);
+    <span class="sc11">update_zombie</span>(<span class="sc11">key</span>);
+}
+
+<span class="sc2">/**
+ *  Sets up the game and hosts the event loop.
+ */</span>
+<span class="sc9">int</span> <span class="sc11">main</span>(<span class="sc10">void</span>) {
+    <span class="sc5">const</span> <span class="sc9">int</span> <span class="sc11">DELAY</span> = <span class="sc4">10</span>;
+    <span class="sc11">setup_screen</span>();
+
+    <span class="sc11">setup</span>();
+
+    <span class="sc5">while</span> (!<span class="sc11">game_over</span>) {
+        <span class="sc11">draw_all</span>();
+        <span class="sc11">loop</span>();
+        <span class="sc11">timer_pause</span>(<span class="sc11">DELAY</span>);
+    }
+
+    <span class="sc5">return</span> <span class="sc4">0</span>;
+}
+</pre>
+            <p style="text-align:center">The End.</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+body {
+    font-size: medium;
+    max-width: 55em;
+    font-family: sans-serif;
+    margin: auto;
+    line-height: 1.4em;
+    background-color: #F1F1F1;
+}
+
+.indent {
+    margin-left: 0.6cm;
+}
+
+.codeblock {
+    font-size: +1;
+    font-family: monospace;
+    font-weight: bold;
+    background-color: #303030;
+    color: #dcdcdc;
+    /* font-size: large; */
+}
+
+pre {
+    border: 1px solid gray;
+    padding: 6pt;
+    width: 100%;
+}
+
+textarea {
+    margin-top: 6pt;
+}
+
+td {
+    /* width: 4in; */
+    vertical-align: top;
+}
+
+code {
+    font-size: medium;
+    font-weight: bold;
+}
+
+li {
+    margin-bottom: 6pt;
+}
+
+li ul {
+    margin-top: 6pt;
+}
+
+.section {
+    margin-left: 0.6cm;
+}
+
+.subsection {
+    margin-left: 0.6cm;
+}
+
+span.li {
+    display: list-item;
+    margin-left: 0.6cm
+}
+
+span.li2 {
+    display: list-item;
+    margin-left: 1.2cm
+}
+
+td.truth_table {
+    text-align: center;
+    width: 1cm;
+    vertical-align: middle;
+}
+
+div.truth_table_container {
+    display: inline-block;
+    width: 5.5cm;
+    vertical-align: top;
+    text-align: center;
+}
+
+td.truth_value {
+    background-color: #dddddd;
+}
+
+.sc0 {}
+
+.sc2 {
+    color: #1E9AE0;
+}
+
+.sc4 {
+    color: #FF3A83;
+}
+
+.sc5 {
+    color: #F6F080;
+}
+
+.sc6 {
+    color: #55E439;
+}
+
+.sc9 {
+    color: cyan;
+}
+
+.sc10 {
+    color: #FFAA00;
+}
+
+.sc11 {
+    color: #F8F8F8;
+}
+
+.sc16 {
+    color: #FFAA00;
+}
